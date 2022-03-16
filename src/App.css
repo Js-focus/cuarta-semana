@@ -18,6 +18,10 @@ h1{
   font-size: 45px;
   color: #ffd700;
 }
+button{
+  background-color: #8ae1bb;
+  
+}
 .list{
   display: flex;
   flex-direction: column;
@@ -31,21 +35,20 @@ h1{
   list-style: none;
   color: aliceblue;
   padding: 1rem;
-  text-align: center ;
+  text-align: justify ;
   box-shadow: 2px 1px 8px 2px  black;
   border-radius: 1rem;
 }
 .ul-list li{
   padding: .3rem;
   max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  
   
 }
 .ul-list li b{
   color: #8ae1bb;
 }
+
 div form{
   margin: 2rem 2rem;
   display: flex;
@@ -72,8 +75,21 @@ div form div textarea{
 }
 .buttons{
   display: block;
-  margin: .5rem;
+  margin: .1rem;
 }
 .buttons button{
   margin: .5rem;
+  padding: .25rem 1rem;
+  border-radius: .5rem;
+}
+.buttons-list{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.buttons-list button{
+  margin: 0 2rem;
+  padding: .25rem 1rem;
+  border-radius: .5rem;
 }
