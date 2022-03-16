@@ -1,3 +1,79 @@
+html{
+  background-color: #c5dddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .App {
   text-align: center;
+  margin: 5rem 2rem;
+  background-color: #9ad864;
+  padding: 1rem;
+  border-radius: 2rem;
+  width: fit-content;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  box-shadow: 2px 2px 10px 5px white;
+}
+h1{
+  font-size: 45px;
+  color: #ffd700;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ul-list{
+  background-color: #8a6151;
+  width:  fit-content;
+  margin: 2rem 2rem;
+  list-style: none;
+  color: aliceblue;
+  padding: 1rem;
+  text-align: center ;
+  box-shadow: 2px 1px 8px 2px  black;
+  border-radius: 1rem;
+}
+.ul-list li{
+  padding: .3rem;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+}
+.ul-list li b{
+  color: #8ae1bb;
+}
+div form{
+  margin: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div form div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: .5rem;
+}
+div form div label{
+  font-size: 30px;
+  font-weight: 800;
+  color: #a87b05;
+}
+div form div textarea{
+  width: 100%;
+  height: 10rem;
+  margin: .5rem;
+}
+.buttons{
+  display: block;
+  margin: .5rem;
+}
+.buttons button{
+  margin: .5rem;
 }

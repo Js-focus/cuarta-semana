@@ -58,9 +58,9 @@ const ToDoForms = ({addToDo, setToDoEdit, toDoEdit, selectToDo, upDateToDo}) => 
             </div>
             <div>
                 <label htmlFor="toDo">To do</label>
-                <input 
-                type="textarea"
+                <textarea 
                 id='toDo'
+                placeholder='to do task'
                 onChange={e => setToDo(e.target.value)}
                 value={toDo}
                 />
@@ -74,11 +74,13 @@ const ToDoForms = ({addToDo, setToDoEdit, toDoEdit, selectToDo, upDateToDo}) => 
                 checked={isComplete}
                 />
             </div>
+            <div className='buttons'>
             <button onClick={submit}>Submit</button>
 
             {
                 toDoEdit && <button type='button' onClick={()=> selectToDo()}>Cancel</button>
             }
+            </div>
             </form>
         </div>
     );
