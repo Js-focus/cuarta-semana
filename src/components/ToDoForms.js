@@ -4,17 +4,17 @@ const ToDoForms = ({addToDo, setToDoEdit, toDoEdit, selectToDo, upDateToDo}) => 
     
     const [title, setTitle] = useState("");
     const [toDo, setToDo] = useState("");
-    const [isComplete, setIsComplete] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(false);
 
     useEffect(()=>{
         if(toDoEdit){
             setTitle(toDoEdit.title)
-            setToDo(toDoEdit.toDo)
-            setIsComplete(toDoEdit.isComplete)
+            setToDo(toDoEdit.description)
+            setIsCompleted(toDoEdit.isCompleted)
         }else{
             setTitle("")
             setToDo("")
-            setIsComplete(false)
+            setIsCompleted(false)
         }
 
     },[toDoEdit])
@@ -22,23 +22,22 @@ const ToDoForms = ({addToDo, setToDoEdit, toDoEdit, selectToDo, upDateToDo}) => 
     const submit = e => {
         e.preventDefault();
         const data = {
-            id: Date.now(),
             title,
-            toDo,
-            isComplete
+            description: toDo,
+            isCompleted
         };
         if(toDoEdit){
             data.id = toDoEdit.id;
             upDateToDo(data);
             setTitle("");
             setToDo("");
-            setIsComplete(false);
+            setIsCompleted(false);
             setToDoEdit(null);
         }else{
             addToDo(data);
             setTitle("");
             setToDo("");
-            setIsComplete(false);
+            setIsCompleted(false);
             
         }
     
@@ -70,8 +69,8 @@ const ToDoForms = ({addToDo, setToDoEdit, toDoEdit, selectToDo, upDateToDo}) => 
                 <input 
                 type="checkbox" 
                 id='complete'
-                onChange={e => setIsComplete(e.target.checked)}
-                checked={isComplete}
+                onChange={e => setIsCompleted(e.target.checked)}
+                checked={isCompleted}
                 />
             </div>
             <div className='buttons'>

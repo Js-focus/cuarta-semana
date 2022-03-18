@@ -2,56 +2,59 @@
 import './App.css';
 import ToDoForms from './components/ToDoForms';
 import ToDoList from './components/ToDoList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-  const toDoDefault = [
-    {
-      id:"1",
-      title: "Lorem ipsum dolor",
-      toDo: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, in.",
-      isComplete: true
-    },
-    {
-      id:"2",
-      title: "Lorem ipsum dolor",
-      toDo: "Lorem ipsum dolor sit  adipisicing elit. Debitis, in.",
-      isComplete: false
-    },
-    {
-      id:"3",
-      title: "Lorem ipsum dolor",
-      toDo: "Lorem nsectetur, adipisicing elit. Debitis, in.",
-      isComplete: true
-    },
-  ]
-  //ESTADO PRINCIPAL
-  const [toDo, setToDo] = useState(toDoDefault);
-  const [toDoEdit, setToDoEdit] = useState(null);
 
-  const addToDo = (add) => {
-    setToDo([...toDo , add])
+  //ESTADO PRINCIPAL
+  const [toDo, setToDo] = useState([]);
+  const [toDoEdit, setToDoEdit] = useState(null);
+  
+
+  useEffect(()=>{
+    getToDo();
+
+  },[])
+
+  const getToDo = () =>{
+    axios.get(`https://todo-app-academlo.herokuapp.com/todos/`)
+    .then(res => setToDo(res?.data))
   }
 
+
+  const addToDo = (add) => {
+    console.log(add)
+    axios.post("https://todo-app-academlo.herokuapp.com/todos/", add)
+    .then(() => getToDo())
+  }
+
+
+
   const revomeToDo = (id) => {
-    //Con metodo findIndex
-    const index = toDo.findIndex(toD => toD.id === id)
-    toDo.splice(index, 1)
-    setToDo([...toDo])
+    //Con consumo API
+    axios.delete(`https://todo-app-academlo.herokuapp.com/todos/${id}/`)
+    .then(() =>getToDo())
     //con metodo filter
     //setToDo(toDo.filter(Tdo => Tdo.id !== id))
   }
+
+
   const selectToDo = (ToDo)  => {
-    
-    setToDoEdit(ToDo); 
+    if(ToDo){
+    console.log(ToDo.id)
+    axios.get(`https://todo-app-academlo.herokuapp.com/todos/${ToDo.id}/`)
+    .then(res => setToDoEdit(res.data));
+    }else if(ToDo === undefined){
+      setToDoEdit(null)
+    }
   }
+
+
   const upDateToDo = (data) => {
     console.log(data)
-    const index = toDo.findIndex(
-      toDoI => toDoI.id === data.id
-    );
-    toDo[index] = data;
-    setToDo([...toDo]);
+    axios.put(`https://todo-app-academlo.herokuapp.com/todos/${data.id}/`, data)
+    .then(()=> getToDo())
   };
   
   return (
